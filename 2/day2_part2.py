@@ -7,7 +7,7 @@ def read_file(filename: str) -> str:
         return f.read()
 
 def parse_input(data: str) -> list[list[int]]:
-    lines = data.strip().split('\n')
+    lines: list[str] = data.strip().split('\n')
     return [list(map(int, line.split())) for line in lines]
 
 def check(r: list[int]) -> bool:
@@ -31,7 +31,7 @@ def check(r: list[int]) -> bool:
 
 def task(data: str) -> int:
     reports: list[list[int]] = parse_input(data)
-    safe_reports = 0
+    safe_reports: int = 0
 
     for r in reports:
         safe = check(r)
