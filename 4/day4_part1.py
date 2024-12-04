@@ -33,14 +33,14 @@ def task(data: str) -> int:
     for y in range(len(grid)):
         for x in range(len(grid[0])):
             if grid[y][x] == 'X':
-                result += search(grid, x, y, 1, 0, "X")
-                result += search(grid, x, y, -1, 0, "X")
-                result += search(grid, x, y, 0, 1, "X")
-                result += search(grid, x, y, 0, -1, "X")
-                result += search(grid, x, y, 1, 1, "X")
-                result += search(grid, x, y, -1, -1, "X")
-                result += search(grid, x, y, 1, -1, "X")
-                result += search(grid, x, y, -1, 1, "X")
+                result += search(grid, x, y, 1, 0, 'X')
+                result += search(grid, x, y, -1, 0, 'X')
+                result += search(grid, x, y, 0, 1, 'X')
+                result += search(grid, x, y, 0, -1, 'X')
+                result += search(grid, x, y, 1, 1, 'X')
+                result += search(grid, x, y, -1, -1, 'X')
+                result += search(grid, x, y, 1, -1, 'X')
+                result += search(grid, x, y, -1, 1, 'X')
 
     return result
 
