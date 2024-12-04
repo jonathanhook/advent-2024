@@ -15,6 +15,7 @@ def search(grid: list[list[str]], x: int, y: int, dx: int, dy: int, found: str) 
         return 0
 
     found += grid[sy][sx]
+
     if found == 'XMAS':
         return 1
     elif found[-1] != 'XMAS'[len(found)-1]:
