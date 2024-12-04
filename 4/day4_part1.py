@@ -11,10 +11,7 @@ def search(grid: list[list[str]], x: int, y: int, dx: int, dy: int, found: str) 
     sx: int = x + dx
     sy: int = y + dy
 
-    if sx < 0 or sy < 0 or sx >= len(grid[0]) or sy >= len(grid):
-        return 0
-
-    if len(found) > len('XMAS'):
+    if sx < 0 or sy < 0 or sx >= len(grid[0]) or sy >= len(grid) or len(found) > len('XMAS'):
         return 0
 
     found += grid[sy][sx]
