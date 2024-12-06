@@ -23,6 +23,9 @@ class Visited:
     def is_visited(self, d:Direction) -> bool:
         return self.visits[d]
 
+    def any_visited(self):
+        return self.visits[Direction.UP] or self.visits[Direction.DOWN] or self.visits[Direction.LEFT] or self.visits[Direction.RIGHT]
+
     def set_visit(self, d:Direction) -> None:
         self.visits[d] = True
 
@@ -80,10 +83,11 @@ def navigate(grid: list[list[str]], x: int, y: int, d: Direction, v: list[list[V
         return 1
 
     loops: int = 0
-    # branch off as if obstacle here
-    # POSSIBLE BUG IF NO BARRIER CAN BE PLACED AS OOB?
-    if not placed:
-        loops += navigate(grid, n[0], n[1], nd, copy.deepcopy(v), True)#copy.deepcopy(v))
+    # if not placed yet on this branch, place one
+    if not placed and not v[n[1]][n[0]].any_visited():
+        new_grid: list[list[str]] = copy.deepcopy(grid)
+        new_grid[n[1]][n[0]] = '#'
+        loops += navigate(new_grid, x, y, nd, copy.deepcopy(v), True)
 
     # also carry on along current route
     loops += navigate(grid, n[0], n[1], d, v, placed)
@@ -102,8 +106,11 @@ def test(data: str, expected: int) -> bool:
     return result == expected
 
 def main() -> None:
+    start_time = time.time()
     sys.setrecursionlimit(10000)
     print(test(read_file('test.txt'), 6))
+    end_time = time.time()
+    print(f"{end_time - start_time:.3f} seconds")
 
     start_time = time.time()
     print(task(get_data(day=6, year=2024)))
