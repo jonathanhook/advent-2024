@@ -1,5 +1,4 @@
 import math
-
 from aocd import get_data
 
 class Antenna:
