@@ -11,13 +11,13 @@ def parse_input(data: str) -> list[str]:
 def expand(raw: list[str]) -> list[str]:
     expanded: list[str] = []
     is_file: bool = True
-    id: int = 0
+    f_id: int = 0
     for i in range(len(raw)):
         pos: int = int(raw[i])
         for j in range(pos):
-            expanded.append(str(id) if is_file else '.')
+            expanded.append(str(f_id) if is_file else '.')
         if is_file:
-            id+=1
+            f_id+=1
         is_file = not is_file
 
     return expanded
