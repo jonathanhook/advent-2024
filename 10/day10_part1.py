@@ -32,7 +32,6 @@ def task(data: str) -> int:
     grid: list[list[int]] = parse_input(data)
     result: int = 0
 
-
     for y in range(len(grid)):
         for x in range(len(grid[0])):
             if grid[y][x] == 0:
