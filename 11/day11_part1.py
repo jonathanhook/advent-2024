@@ -1,4 +1,5 @@
 import sys
+import time
 from typing import Optional
 from aocd import get_data
 
@@ -56,7 +57,7 @@ def parse_input(data: str) -> Stone:
 def task(data: str) -> int:
     head: Stone = parse_input(data)
 
-    for _ in range(25):
+    for i in range(25):
         current: Stone = head
         while current is not None:
             next_iter: Stone = current.next
@@ -70,7 +71,6 @@ def test(data: str, expected: int) -> bool:
     return result == expected
 
 def main() -> None:
-    sys.setrecursionlimit(100000)
     print(test(read_file('test.txt'), 55312))
     print(task(get_data(day=11, year=2024)))
 main()
